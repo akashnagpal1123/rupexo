@@ -8,17 +8,14 @@ import HomeMainPage from './pages/HomeMainPage';
 
 function App() {
   return (
-    <>
-      <Box sx={{ width: '100%', height: '100%' }}>
-        <Header />
-        <main>
-          <HomeMainPage />
-        </main>
-        <Footer />
-      </Box>
-
-
-    </>
+    <Box sx={{ bgcolor: '#000', color: 'text.primary' }}>
+      <CssBaseline />
+      <Header />
+      <main>
+        <HomeMainPage />
+      </main>
+      <Footer />
+    </Box>
   );
 }
 
