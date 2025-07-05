@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, Link, Grid, IconButton, Divider } from '@mui/material';
-import { Facebook, Twitter, LinkedIn, Instagram, GitHub } from '@mui/icons-material';
+import { Facebook, Twitter, LinkedIn, Instagram, GitHub, WhatsApp } from '@mui/icons-material';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -69,7 +69,8 @@ const Footer = () => {
                     { icon: <Twitter />, href: '#', label: 'Twitter' },
                     { icon: <LinkedIn />, href: '#', label: 'LinkedIn' },
                     { icon: <Instagram />, href: '#', label: 'Instagram' },
-                    { icon: <GitHub />, href: '#', label: 'GitHub' }
+                    { icon: <GitHub />, href: '#', label: 'GitHub' },
+                    { icon: <WhatsApp />, href: '#', label: 'WhatsApp' },
                   ].map((social) => (
                     <IconButton
                       key={social.label}
