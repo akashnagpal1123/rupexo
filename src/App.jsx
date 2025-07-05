@@ -8,7 +8,11 @@ import HomeMainPage from './pages/HomeMainPage';
 
 function App() {
   return (
-    <Box sx={{ bgcolor: '#000', color: 'text.primary' }}>
+    <Box sx={{ 
+      bgcolor: '#000', 
+      color: 'text.primary',
+      fontFamily: 'Montserrat'
+    }}>
       <CssBaseline />
       <Header />
       <main>
