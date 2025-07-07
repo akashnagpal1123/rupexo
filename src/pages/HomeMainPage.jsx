@@ -7,7 +7,8 @@ import Section3 from '../components/HomePage/Section3'
 const HomeMainPage = () => {
     return (
         <div>  <Hero />
-            <Section1 /><Section3/>
+        <Section3/>
+            <Section1 />
             <Section2 />
             </div>
     )

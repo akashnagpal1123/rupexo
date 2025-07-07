@@ -24,6 +24,10 @@ const Section3 = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //Function to be created
+  //Rate to be customized
+
+
   // Fetch exchange rate on load
   useEffect(() => {
     const fetchRate = async () => {
@@ -89,8 +93,8 @@ const Section3 = () => {
     <Box
       sx={{
         py: { xs: 6, md: 10 },
-        // background: 'linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%)',
-        background: 'linear-gradient(180deg,rgba(58, 51, 0, 0.27) 0%, #0A0A0A 50%,rgba(17, 17, 17, 0.65) 100%)',
+        background: 'linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%)',
+        // background: 'linear-gradient(180deg,rgba(58, 51, 0, 0.27) 0%, #0A0A0A 50%,rgba(17, 17, 17, 0.65) 100%)',
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
@@ -202,7 +206,8 @@ const Section3 = () => {
               </Grid>
               {rate && (
                 <Typography variant="body2" sx={{ textAlign: 'center', mt: 3, opacity: 0.7 }}>
-                  Live rate: 1 USDT = ₹{rate} (from {source})
+                  Live rate: 1 USDT = ₹{rate} 
+                  {/* (from {source}) */}
                 </Typography>
               )}
             </Box>

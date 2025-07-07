@@ -45,6 +45,17 @@ const Header = () => {
         >
           About Us
         </Button>
+        <Button 
+          sx={{ 
+            color: '#FFD700',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 215, 0, 0.1)',
+              color: '#FFF'
+            }
+          }}
+        >
+          Download KYC Form
+        </Button>
       </Toolbar>
     </AppBar>
   );

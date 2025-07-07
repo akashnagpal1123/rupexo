@@ -66,10 +66,10 @@ const Footer = () => {
                 <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                   {[
                     { icon: <Facebook />, href: '#', label: 'Facebook' },
-                    { icon: <Twitter />, href: '#', label: 'Twitter' },
-                    { icon: <LinkedIn />, href: '#', label: 'LinkedIn' },
+                    // { icon: <Twitter />, href: '#', label: 'Twitter' },
+                    // { icon: <LinkedIn />, href: '#', label: 'LinkedIn' },
                     { icon: <Instagram />, href: '#', label: 'Instagram' },
-                    { icon: <GitHub />, href: '#', label: 'GitHub' },
+                    // { icon: <GitHub />, href: '#', label: 'GitHub' },
                     { icon: <WhatsApp />, href: '#', label: 'WhatsApp' },
                   ].map((social) => (
                     <IconButton
@@ -168,6 +168,7 @@ const Footer = () => {
                     <strong>Phone:</strong><br />
                     +1 (555) 123-4567
                   </Typography>
+                  
                   <Typography
                     variant="body2"
                     sx={{
@@ -177,9 +178,9 @@ const Footer = () => {
                       lineHeight: 1.4
                     }}
                   >
-                    <strong>Address:</strong><br />
-                    123 Innovation St<br />
-                    Tech City, TC 12345
+                    <strong>Office Hours:</strong><br />
+                    Mon-Fri: 9AM-6PM<br />
+                    Sat: 10AM-4PM
                   </Typography>
                   <Typography
                     variant="body2"
@@ -190,9 +191,9 @@ const Footer = () => {
                       lineHeight: 1.4
                     }}
                   >
-                    <strong>Hours:</strong><br />
-                    Mon-Fri: 9AM-6PM<br />
-                    Sat: 10AM-4PM
+                    <strong>Customer Support:</strong><br />
+                    24/7<br />
+                    
                   </Typography>
                 </Box>
               </Box>
