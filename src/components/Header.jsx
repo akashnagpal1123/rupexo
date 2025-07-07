@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -13,17 +14,21 @@ const Header = () => {
       <Toolbar>
         <Typography 
           variant="h6" 
-          component="div" 
+          component={Link}
+          to="/"
           sx={{ 
             flexGrow: 1,
             color: '#FFD700',
             fontWeight: 'bold',
-            textShadow: '0 0 10px rgba(255, 215, 0, 0.5)'
+            textShadow: '0 0 10px rgba(255, 215, 0, 0.5)',
+            textDecoration: 'none'
           }}
         >
           Rupexo
         </Typography>
         <Button 
+          component={Link}
+          to="/about"
           sx={{ 
             color: '#FFD700',
             '&:hover': {
@@ -32,7 +37,33 @@ const Header = () => {
             }
           }}
         >
-          Contact Us
+          About Us
+        </Button>
+        <Button 
+          component={Link}
+          to="/careers"
+          sx={{ 
+            color: '#FFD700',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 215, 0, 0.1)',
+              color: '#FFF'
+            }
+          }}
+        >
+          Careers
+        </Button>
+        <Button 
+          component={Link}
+          to="/news"
+          sx={{ 
+            color: '#FFD700',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 215, 0, 0.1)',
+              color: '#FFF'
+            }
+          }}
+        >
+          News
         </Button>
         <Button 
           sx={{ 
@@ -43,7 +74,7 @@ const Header = () => {
             }
           }}
         >
-          About Us
+          Contact Us
         </Button>
         <Button 
           sx={{ 

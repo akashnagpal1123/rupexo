@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Container, Typography, Link, Grid, IconButton, Divider } from '@mui/material';
+import { Box, Container, Typography, Link as MuiLink, Grid, IconButton, Divider } from '@mui/material';
 import { Facebook, Twitter, LinkedIn, Instagram, GitHub, WhatsApp } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -107,26 +108,42 @@ const Footer = () => {
                   Company
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                  {['About Us', 'Our Team', 'Careers', 'Press', 'Blog', 'News', 'Partners'].map((link) => (
-                    <Link
-                      key={link}
-                      href="#"
-                      sx={{
-                        color: '#FFD700',
-                        opacity: 0.8,
-                        textDecoration: 'none',
-                        fontSize: { xs: '0.9rem', sm: '1rem' },
-                        '&:hover': {
-                          color: '#FFF',
-                          opacity: 1,
-                          transform: 'translateX(5px)'
-                        },
-                        transition: 'all 0.3s ease'
-                      }}
-                    >
-                      {link}
-                    </Link>
-                  ))}
+                  <Link
+                    to="/about"
+                    style={{
+                      color: '#FFD700',
+                      opacity: 0.8,
+                      textDecoration: 'none',
+                      fontSize: '1rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    About Us
+                  </Link>
+                  <Link
+                    to="/careers"
+                    style={{
+                      color: '#FFD700',
+                      opacity: 0.8,
+                      textDecoration: 'none',
+                      fontSize: '1rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Careers
+                  </Link>
+                  <Link
+                    to="/news"
+                    style={{
+                      color: '#FFD700',
+                      opacity: 0.8,
+                      textDecoration: 'none',
+                      fontSize: '1rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    News
+                  </Link>
                 </Box>
               </Box>
 
@@ -237,7 +254,7 @@ const Footer = () => {
               justifyContent: { xs: 'center', sm: 'flex-end' }
             }}>
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR'].map((link) => (
-                <Link
+                <MuiLink
                   key={link}
                   href="#"
                   sx={{
@@ -248,12 +265,11 @@ const Footer = () => {
                     '&:hover': {
                       color: '#FFF',
                       opacity: 1
-                    },
-                    transition: 'all 0.3s ease'
+                    }
                   }}
                 >
                   {link}
-                </Link>
+                </MuiLink>
               ))}
             </Box>
           </Box>
