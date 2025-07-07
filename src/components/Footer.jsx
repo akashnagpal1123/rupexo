@@ -71,11 +71,13 @@ const Footer = () => {
                     // { icon: <LinkedIn />, href: '#', label: 'LinkedIn' },
                     { icon: <Instagram />, href: '#', label: 'Instagram' },
                     // { icon: <GitHub />, href: '#', label: 'GitHub' },
-                    { icon: <WhatsApp />, href: '#', label: 'WhatsApp' },
+                    { icon: <WhatsApp />, href: 'https://wa.me/918527497263', label: 'WhatsApp' },
                   ].map((social) => (
                     <IconButton
                       key={social.label}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       sx={{
                         color: '#FFD700',
                         border: '1px solid rgba(255, 215, 0, 0.3)',

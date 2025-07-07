@@ -77,6 +77,9 @@ const Header = () => {
           Contact Us
         </Button>
         <Button 
+          component="a"
+          href="/docs/Rupexo (KYC Form).pdf"
+          download
           sx={{ 
             color: '#FFD700',
             '&:hover': {
