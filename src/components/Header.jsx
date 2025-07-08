@@ -1,22 +1,50 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button, Box, IconButton, Menu, MenuItem, useTheme } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const buttonStyles = {
+    color: '#FFD700',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 215, 0, 0.1)',
+      color: '#FFF'
+    }
+  };
+
+  const menuItems = [
+    <MenuItem key="about" onClick={handleMenuClose} component={Link} to="/about">About Us</MenuItem>,
+    <MenuItem key="contact" onClick={handleMenuClose}>Contact Us</MenuItem>,
+    <MenuItem key="download" onClick={handleMenuClose} component="a" href="/docs/Rupexo (KYC Form).pdf" download>Download KYC Form</MenuItem>
+  ];
+
   return (
-    <AppBar 
-      position="static" 
-      sx={{ 
+    <AppBar
+      position="static"
+      sx={{
         backgroundColor: '#222222',
         boxShadow: '0 2px 8px rgba(255, 215, 0, 0.2)'
       }}
     >
       <Toolbar>
-        <Typography 
-          variant="h6" 
+        <Typography
+          variant="h6"
           component={Link}
           to="/"
-          sx={{ 
+          sx={{
             flexGrow: 1,
             color: '#FFD700',
             fontWeight: 'bold',
@@ -26,70 +54,63 @@ const Header = () => {
         >
           Rupexo
         </Typography>
-        <Button 
-          component={Link}
-          to="/about"
-          sx={{ 
-            color: '#FFD700',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 215, 0, 0.1)',
-              color: '#FFF'
-            }
-          }}
-        >
-          About Us
-        </Button>
-        <Button 
-          component={Link}
-          to="/careers"
-          sx={{ 
-            color: '#FFD700',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 215, 0, 0.1)',
-              color: '#FFF'
-            }
-          }}
-        >
-          Careers
-        </Button>
-        <Button 
-          component={Link}
-          to="/news"
-          sx={{ 
-            color: '#FFD700',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 215, 0, 0.1)',
-              color: '#FFF'
-            }
-          }}
-        >
-          News
-        </Button>
-        <Button 
-          sx={{ 
-            color: '#FFD700',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 215, 0, 0.1)',
-              color: '#FFF'
-            }
-          }}
-        >
-          Contact Us
-        </Button>
-        <Button 
-          component="a"
-          href="/docs/Rupexo (KYC Form).pdf"
-          download
-          sx={{ 
-            color: '#FFD700',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 215, 0, 0.1)',
-              color: '#FFF'
-            }
-          }}
-        >
-          Download KYC Form
-        </Button>
+
+        {isMobile ? (
+          <>
+            <IconButton
+              color="inherit"
+              aria-label="menu"
+              onClick={handleMenuOpen}
+              sx={{ color: '#FFD700' }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+              sx={{
+                '& .MuiPaper-root': {
+                  backgroundColor: '#333',
+                  color: '#FFD700',
+                },
+                '& .MuiMenuItem-root': {
+                  ...buttonStyles,
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                    color: '#FFF'
+                  }
+                }
+              }}
+            >
+              {menuItems}
+            </Menu>
+          </>
+        ) : (
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Button
+              component={Link}
+              to="/about"
+              sx={buttonStyles}
+            >
+              About Us
+            </Button>
+            <Button sx={buttonStyles}>
+              Contact Us
+            </Button>
+            <Button
+              component="a"
+              href="/docs/Rupexo (KYC Form).pdf"
+              download
+              sx={buttonStyles}
+            >
+              Download KYC Form
+            </Button>
+          </Box>
+        )}
       </Toolbar>
     </AppBar>
   );

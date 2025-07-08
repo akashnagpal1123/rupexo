@@ -146,6 +146,18 @@ const Footer = () => {
                   >
                     News
                   </Link>
+                  <Link
+                    to="/partners"
+                    style={{
+                      color: '#FFD700',
+                      opacity: 0.8,
+                      textDecoration: 'none',
+                      fontSize: '1rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Partners
+                  </Link>
                 </Box>
               </Box>
 
