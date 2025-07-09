@@ -41,21 +41,12 @@ const Header = () => {
       }}
     >
       <Toolbar>
-        <Typography 
-          variant="h6" 
-          component={Link}
-          to="/"
-          sx={{ 
-            flexGrow: 1,
-            color: '#FFD700',
-            fontWeight: 'bold',
-            textShadow: '0 0 10px rgba(255, 215, 0, 0.5)',
-            textDecoration: 'none'
-          }}
-        >
-          Rupexo
-        </Typography>
-
+        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+          <img src="/images/rupexo_logo_final.png" alt="Rupexo Logo" style={{ height: '40px', marginRight: '10px' }} />
+          <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', color: '#FFD700' }}>
+            Rupexo
+          </Typography>
+        </Box>
         {isMobile ? (
           <>
             <IconButton
