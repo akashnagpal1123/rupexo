@@ -40,10 +40,10 @@ const featureData = [
   },
   {
     icon: <AccountBalanceWalletIcon sx={{ fontSize: 50 }} />,
-    title: 'Instant Wallet',
-    description: 'Create your digital wallet instantly and start trading immediately',
+    title: 'Instant Account Transfer',
+    description: 'Send your funds to our verified account in seconds with seamless UPI or IMPS.',
     gradient: 'linear-gradient(135deg, #FFD700 0%, #FF1493 100%)',
-  },
+  }
 ];
 
 const Feature = ({ icon, title, description, gradient }) => (

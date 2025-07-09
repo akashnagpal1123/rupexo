@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
-import { Box, Typography, Button, Container, Grid } from '@mui/material';
+import { Box, Typography, Button, Container, Grid, Stack } from '@mui/material';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import SecurityIcon from '@mui/icons-material/Security';
 import SpeedIcon from '@mui/icons-material/Speed';
+import GraphBox from '../HeroSectionComponents/GraphBox';
+import { getWhatsAppUrl } from '../../utils/whatsapp';
 
 // Using motion like this to avoid 'motion' is defined but never used lint error.
 const MotionDiv = motion.div;
@@ -92,7 +94,7 @@ const Hero = () => {
           textAlign: 'center',
         }}
       >
-        <Container maxWidth="lg">
+        <Box maxWidth="100%" width={"90%"}>
           <Box
             sx={{
               background: 'rgba(0, 0, 0, 0.25)',
@@ -101,11 +103,13 @@ const Hero = () => {
               border: '1px solid rgba(255, 255, 255, 0.18)',
               p: { xs: 3, md: 5 },
               boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+              
+          
             }}
           >
             <Grid container spacing={4} alignItems="center">
               {/* Main Content */}
-              <Grid item xs={12} md={7}>
+              <Grid item xs={12} md={6}>
                 <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                   {/* Badge */}
                   <Box
@@ -150,7 +154,7 @@ const Hero = () => {
                       textShadow: '0 0 30px rgba(255, 215, 0, 0.3)',
                       lineHeight: 1.1,
                       mb: 3,
-                      fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+                      fontSize: { xs: '2.2rem', sm: '3.5rem', md: '4rem' },
                       background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
@@ -174,21 +178,24 @@ const Hero = () => {
                       maxWidth: 600,
                     }}
                   >
-                    Experience lightning-fast cryptocurrency exchange with bank-grade security. 
+                    Experience lightning-fast cryptocurrency exchange with bank-grade security.
                     Convert your rupees to USDT in under 30 seconds.
                   </Typography>
 
                   {/* CTA Buttons */}
-                  <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                  <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' }, justifyContent: { xs: 'center', md: 'flex-start' } }}>
                     <Button
                       variant="contained"
                       endIcon={<ArrowForwardIcon />}
+                      href={getWhatsAppUrl("Hello! I'm interested in your service.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       sx={{
                         background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
                         color: '#000',
                         fontWeight: 700,
-                        padding: '15px 30px',
-                        fontSize: '1.1rem',
+                        padding: { xs: '12px 24px', sm: '15px 30px' },
+                        fontSize: { xs: '1rem', sm: '1.1rem' },
                         borderRadius: '12px',
                         boxShadow: '0 8px 25px rgba(255, 215, 0, 0.3)',
                         transition: 'all 0.3s ease',
@@ -201,14 +208,14 @@ const Hero = () => {
                     >
                       Get Started Now
                     </Button>
-                    <Button
+                    {/* <Button
                       variant="outlined"
                       sx={{
                         border: '2px solid #FFD700',
                         color: '#FFD700',
                         fontWeight: 600,
-                        padding: '13px 25px',
-                        fontSize: '1rem',
+                        padding: { xs: '10px 20px', sm: '13px 25px' },
+                        fontSize: { xs: '0.9rem', sm: '1rem' },
                         borderRadius: '12px',
                         transition: 'all 0.3s ease',
                         '&:hover': {
@@ -219,19 +226,20 @@ const Hero = () => {
                       }}
                     >
                       Learn More
-                    </Button>
+                    </Button> */}
                   </Box>
                 </Box>
               </Grid>
 
               {/* Stats Section */}
-              <Grid item xs={12} md={5}>
+              <Grid item xs={12} md={3}>
                 <Box
                   sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 3,
-                    alignItems: { xs: 'center', md: 'flex-end' },
+                    alignItems: { xs: 'center', md: 'stretch' },
+                    width: '100%',
                   }}
                 >
                   {stats.map((stat, index) => (
@@ -250,7 +258,8 @@ const Hero = () => {
                           background: 'rgba(255, 255, 255, 0.05)',
                           border: '1px solid rgba(255, 215, 0, 0.1)',
                           borderRadius: 3,
-                          minWidth: 200,
+                          width: { xs: '100%', sm: 280 },
+                          maxWidth: 320,
                           transition: 'all 0.3s ease',
                           '&:hover': {
                             transform: 'translateX(-5px) scale(1.02)',
@@ -258,6 +267,7 @@ const Hero = () => {
                             boxShadow: '0 4px 15px rgba(255, 215, 0, 0.1)',
                             background: 'rgba(255, 255, 255, 0.1)',
                           },
+                          justifyContent: {md: 'space-between'}
                         }}
                       >
                         <Box
@@ -302,9 +312,14 @@ const Hero = () => {
                   ))}
                 </Box>
               </Grid>
+
+              {/*   Graph Section */}
+              <Grid item xs={12} md={3}>
+                <GraphBox />
+              </Grid>
             </Grid>
           </Box>
-        </Container>
+        </Box>
       </MotionDiv>
     </Box>
   );

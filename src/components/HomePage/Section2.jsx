@@ -4,39 +4,56 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 const stepsData = [
   {
     number: '01',
-    title: 'Create Account',
-    description: 'Sign up in under 2 minutes with our streamlined verification process',
-    icon: <PersonAddIcon sx={{ fontSize: 40 }} />,
+    title: 'Get Your Best Rate',
+    description: 'Connect with us to check our unbeatable USDT rate — always better than market averages.',
+    icon: <CurrencyExchangeIcon sx={{ fontSize: 40 }} />,
     gradient: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-    duration: '2 min',
+    duration: 'Real-time',
   },
   {
     number: '02',
-    title: 'Link Your Bank',
-    description: 'Securely connect your bank account with our encrypted API integration',
-    icon: <AccountBalanceIcon sx={{ fontSize: 40 }} />,
+    title: 'Connect With Us',
+    description: 'Reach out to us via WhatsApp or chat to begin your transaction.',
+    icon: <PersonAddIcon sx={{ fontSize: 40 }} />,
     gradient: 'linear-gradient(135deg, #FFD700 0%, #FF8C00 100%)',
-    duration: '5 min',
+    duration: '1 min',
   },
   {
     number: '03',
-    title: 'Start Trading',
-    description: 'Convert your rupees to USDT instantly with real-time market rates',
-    icon: <CurrencyExchangeIcon sx={{ fontSize: 40 }} />,
+    title: 'Make Payment',
+    description: 'Transfer the INR amount to our verified bank account securely.',
+    icon: <AccountBalanceIcon sx={{ fontSize: 40 }} />,
     gradient: 'linear-gradient(135deg, #FFD700 0%, #FF6B35 100%)',
-    duration: '30 sec',
+    duration: '2–3 min',
   },
   {
     number: '04',
-    title: 'Get USDT',
-    description: 'Receive your USDT directly to your wallet with instant confirmation',
+    title: 'Submit KYC',
+    description: 'Provide your KYC details to ensure a secure and compliant transaction.',
     icon: <CheckCircleIcon sx={{ fontSize: 40 }} />,
     gradient: 'linear-gradient(135deg, #FFD700 0%, #FF4500 100%)',
+    duration: '1 min',
+  },
+  {
+    number: '05',
+    title: 'Receive USDT',
+    description: 'We’ll instantly send the USDT to your account after payment and verification.',
+    icon: <CurrencyExchangeIcon sx={{ fontSize: 40 }} />,
+    gradient: 'linear-gradient(135deg, #FFD700 0%, #FF6347 100%)',
     duration: 'Instant',
+  },
+  {
+    number: '06',
+    title: 'Come Back Soon!',
+    description: 'Thank you for choosing us. We look forward to serving you again.',
+    icon: <HandshakeIcon sx={{ fontSize: 40 }} />,
+    gradient: 'linear-gradient(135deg, #FFD700 0%, #FF7F50 100%)',
+    duration: 'See you!',
   },
 ];
 

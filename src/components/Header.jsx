@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Button, Box, IconButton, Menu, MenuItem, u
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import { getWhatsAppUrl } from '../utils/whatsapp';
 
 const Header = () => {
   const theme = useTheme();
@@ -32,19 +33,19 @@ const Header = () => {
   ];
 
   return (
-    <AppBar
-      position="static"
-      sx={{
+    <AppBar 
+      position="static" 
+      sx={{ 
         backgroundColor: '#222222',
         boxShadow: '0 2px 8px rgba(255, 215, 0, 0.2)'
       }}
     >
       <Toolbar>
-        <Typography
-          variant="h6"
+        <Typography 
+          variant="h6" 
           component={Link}
           to="/"
-          sx={{
+          sx={{ 
             flexGrow: 1,
             color: '#FFD700',
             fontWeight: 'bold',
@@ -72,43 +73,48 @@ const Header = () => {
               MenuListProps={{
                 'aria-labelledby': 'basic-button',
               }}
-              sx={{
+          sx={{ 
                 '& .MuiPaper-root': {
                   backgroundColor: '#333',
-                  color: '#FFD700',
+            color: '#FFD700',
                 },
                 '& .MuiMenuItem-root': {
                   ...buttonStyles,
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 215, 0, 0.1)',
-                    color: '#FFF'
-                  }
+            '&:hover': {
+              backgroundColor: 'rgba(255, 215, 0, 0.1)',
+              color: '#FFF'
+            }
                 }
-              }}
-            >
+          }}
+        >
               {menuItems}
             </Menu>
           </>
         ) : (
           <Box sx={{ display: 'flex', gap: 1 }}>
-            <Button
-              component={Link}
+        <Button 
+          component={Link}
               to="/about"
               sx={buttonStyles}
-            >
+        >
               About Us
             </Button>
-            <Button sx={buttonStyles}>
-              Contact Us
-            </Button>
-            <Button
-              component="a"
-              href="/docs/Rupexo (KYC Form).pdf"
-              download
+            <Button 
               sx={buttonStyles}
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Download KYC Form
+              Buy USDT
             </Button>
+        <Button 
+          component="a"
+          href="/docs/Rupexo (KYC Form).pdf"
+          download
+              sx={buttonStyles}
+        >
+          Download KYC Form
+        </Button>
           </Box>
         )}
       </Toolbar>

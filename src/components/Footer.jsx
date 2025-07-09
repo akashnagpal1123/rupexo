@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Container, Typography, Link as MuiLink, Grid, IconButton, Divider } from '@mui/material';
 import { Facebook, Twitter, LinkedIn, Instagram, GitHub, WhatsApp } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { getWhatsAppUrl } from '../utils/whatsapp';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -70,8 +71,8 @@ const Footer = () => {
                     // { icon: <Twitter />, href: '#', label: 'Twitter' },
                     // { icon: <LinkedIn />, href: '#', label: 'LinkedIn' },
                     { icon: <Instagram />, href: '#', label: 'Instagram' },
-                    // { icon: <GitHub />, href: '#', label: 'GitHub' },
-                    { icon: <WhatsApp />, href: 'https://wa.me/918527497263', label: 'WhatsApp' },
+                    // { icon: <GitHub />, href: 'https://github.com/Rupexo', label: 'GitHub' },
+                    { icon: <WhatsApp />, href: getWhatsAppUrl('Hello, I have a question.'), label: 'WhatsApp' },
                   ].map((social) => (
                     <IconButton
                       key={social.label}
