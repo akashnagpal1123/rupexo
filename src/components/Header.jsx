@@ -33,15 +33,18 @@ const Header = () => {
   ];
 
   return (
-    <AppBar 
-      position="static" 
-      sx={{ 
-        backgroundColor: '#222222',
-        boxShadow: '0 2px 8px rgba(255, 215, 0, 0.2)'
-      }}
-    >
+    <AppBar position="fixed" sx={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}>
       <Toolbar>
-        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+        <Box
+          component={Link}
+          to="/"
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexGrow: 1,
+            textDecoration: 'none'
+          }}
+        >
           <img src="/images/rupexo_logo_final.png" alt="Rupexo Logo" style={{ height: '40px', marginRight: '10px' }} />
           <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', color: '#FFD700' }}>
             Rupexo
