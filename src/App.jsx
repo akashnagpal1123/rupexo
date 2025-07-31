@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 import { Box, CssBaseline } from '@mui/material';
 import HomeMainPage from './pages/HomeMainPage';
 import AboutUs from './pages/AboutUs';
@@ -27,6 +28,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </Box>
   );
 }
