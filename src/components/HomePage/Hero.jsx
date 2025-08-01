@@ -94,7 +94,7 @@ const Hero = () => {
           textAlign: 'center',
         }}
       >
-        <Box maxWidth="100%" width={"90%"}>
+        <Box maxWidth="100%" width={"95%"}>
           <Box
             sx={{
               background: 'rgba(0, 0, 0, 0.25)',
@@ -233,15 +233,15 @@ const Hero = () => {
 
               {/* Stats Section */}
               <Grid item xs={12} md={3}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 3,
-                    alignItems: { xs: 'center', md: 'stretch' },
-                    width: '100%',
-                  }}
-                >
+                                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 3,
+                      alignItems: { xs: 'center', md: 'stretch' },
+                      width: '100%',
+                    }}
+                  >
                   {stats.map((stat, index) => (
                     <MotionDiv
                       key={index}
@@ -249,27 +249,26 @@ const Hero = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.2 }}
                     >
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 2,
-                          p: 2,
-                          background: 'rgba(255, 255, 255, 0.05)',
-                          border: '1px solid rgba(255, 215, 0, 0.1)',
-                          borderRadius: 3,
-                          width: { xs: '100%', sm: 280 },
-                          maxWidth: 320,
-                          transition: 'all 0.3s ease',
-                          '&:hover': {
-                            transform: 'translateX(-5px) scale(1.02)',
-                            borderColor: 'rgba(255, 215, 0, 0.4)',
-                            boxShadow: '0 4px 15px rgba(255, 215, 0, 0.1)',
-                            background: 'rgba(255, 255, 255, 0.1)',
-                          },
-                          justifyContent: {md: 'space-between'}
-                        }}
-                      >
+                                              <Box
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 2,
+                            p: 2,
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            border: '1px solid rgba(255, 215, 0, 0.1)',
+                            borderRadius: 3,
+                            width: '100%',
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                              transform: 'translateX(-5px) scale(1.02)',
+                              borderColor: 'rgba(255, 215, 0, 0.4)',
+                              boxShadow: '0 4px 15px rgba(255, 215, 0, 0.1)',
+                              background: 'rgba(255, 255, 255, 0.1)',
+                            },
+                            justifyContent: {md: 'space-between'}
+                          }}
+                        >
                         <Box
                           sx={{
                             color: '#FFD700',
