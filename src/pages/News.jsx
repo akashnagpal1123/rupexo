@@ -9,8 +9,6 @@ const News = () => {
   const [lastUpdated, setLastUpdated] = useState(null);
 
   const fetchNews = async (forceRefresh = false) => {
-    const API_KEY = '513edfa749f247dd970696675f106251';
-    
     try {
       // Check if we have cached news and if it's less than 24 hours old
       const cachedNews = localStorage.getItem('crypto-news');
@@ -29,20 +27,31 @@ const News = () => {
       setLoading(true);
       setError(null);
       
-      // Use direct API call instead of proxy
-      const response = await fetch(`https://newsapi.org/v2/everything?q=cryptocurrency&pageSize=6&apiKey=${API_KEY}`);
+      // Using CryptoCompare API - more reliable and works in production
+      const response = await fetch('https://min-api.cryptocompare.com/data/v2/news/?lang=EN');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
       const data = await response.json();
-      if (data.articles) {
-        setNewsArticles(data.articles);
+      if (data.Data && data.Data.length > 0) {
+        // Transform CryptoCompare data to match our expected format
+        const transformedNews = data.Data.slice(0, 6).map(article => ({
+          title: article.title,
+          description: article.body,
+          url: article.url,
+          publishedAt: new Date(article.published_on * 1000).toISOString(),
+          source: {
+            name: article.source || 'CryptoCompare'
+          }
+        }));
+        
+        setNewsArticles(transformedNews);
         setLastUpdated(new Date());
         
         // Cache the news and timestamp
-        localStorage.setItem('crypto-news', JSON.stringify(data.articles));
+        localStorage.setItem('crypto-news', JSON.stringify(transformedNews));
         localStorage.setItem('crypto-news-timestamp', Date.now().toString());
       } else {
         setError('No articles found');
