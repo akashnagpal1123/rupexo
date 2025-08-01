@@ -1,39 +1,134 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Container, Paper, Link } from '@mui/material';
+import { Box, Typography, Container, Paper, Link, Button, CircularProgress } from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const News = () => {
   const [newsArticles, setNewsArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
+
+  const fetchNews = async (forceRefresh = false) => {
+    const API_KEY = '513edfa749f247dd970696675f106251';
+    
+    try {
+      // Check if we have cached news and if it's less than 24 hours old
+      const cachedNews = localStorage.getItem('crypto-news');
+      const lastFetchTime = localStorage.getItem('crypto-news-timestamp');
+      const isCacheValid = cachedNews && lastFetchTime && 
+        (Date.now() - parseInt(lastFetchTime)) < 24 * 60 * 60 * 1000; // 24 hours
+
+      if (!forceRefresh && isCacheValid) {
+        const parsedNews = JSON.parse(cachedNews);
+        setNewsArticles(parsedNews);
+        setLastUpdated(new Date(parseInt(lastFetchTime)));
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      setError(null);
+      
+      // Use direct API call instead of proxy
+      const response = await fetch(`https://newsapi.org/v2/everything?q=cryptocurrency&pageSize=6&apiKey=${API_KEY}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      if (data.articles) {
+        setNewsArticles(data.articles);
+        setLastUpdated(new Date());
+        
+        // Cache the news and timestamp
+        localStorage.setItem('crypto-news', JSON.stringify(data.articles));
+        localStorage.setItem('crypto-news-timestamp', Date.now().toString());
+      } else {
+        setError('No articles found');
+      }
+    } catch (error) {
+      console.error("Error fetching crypto news:", error);
+      setError('Failed to load news. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchNews = async () => {
-      // IMPORTANT: You need to get an API key from newsapi.org and replace 'YOUR_API_KEY'
-      const API_KEY = '513edfa749f247dd970696675f106251'; 
-      try {
-        const response = await fetch(`/api/everything?q=cryptocurrency&pageSize=6&apiKey=${API_KEY}`);
-        const data = await response.json();
-        if (data.articles) {
-          setNewsArticles(data.articles);
-        }
-      } catch (error) {
-        console.error("Error fetching crypto news:", error);
-      }
-    };
-
     fetchNews();
   }, []);
+
+  const handleRefresh = () => {
+    fetchNews(true); // Force refresh
+  };
+
+  const formatLastUpdated = (date) => {
+    if (!date) return '';
+    const now = new Date();
+    const diffInHours = Math.floor((now - date) / (1000 * 60 * 60));
+    
+    if (diffInHours < 1) return 'Just now';
+    if (diffInHours === 1) return '1 hour ago';
+    if (diffInHours < 24) return `${diffInHours} hours ago`;
+    
+    const diffInDays = Math.floor(diffInHours / 24);
+    if (diffInDays === 1) return '1 day ago';
+    return `${diffInDays} days ago`;
+  };
 
   return (
     <Box sx={{ py: 8, backgroundColor: '#111' }}>
       <Container maxWidth="md">
-        <Typography variant="h2" component="h1" gutterBottom align="center" sx={{ color: '#FFD700', fontWeight: 'bold' }}>
-          Crypto News
-        </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" paragraph sx={{ color: '#fff' }}>
-          Your daily source for the latest news and updates in the cryptocurrency world.
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+          <Box>
+            <Typography variant="h2" component="h1" gutterBottom sx={{ color: '#FFD700', fontWeight: 'bold' }}>
+              Crypto News
+            </Typography>
+            <Typography variant="h5" color="text.secondary" paragraph sx={{ color: '#fff' }}>
+              Your daily source for the latest news and updates in the cryptocurrency world.
+            </Typography>
+            {lastUpdated && (
+              <Typography variant="body2" sx={{ color: '#ccc', fontStyle: 'italic' }}>
+                Last updated: {formatLastUpdated(lastUpdated)}
+              </Typography>
+            )}
+          </Box>
+          <Button
+            variant="outlined"
+            startIcon={<RefreshIcon />}
+            onClick={handleRefresh}
+            disabled={loading}
+            sx={{
+              color: '#FFD700',
+              borderColor: '#FFD700',
+              '&:hover': {
+                borderColor: '#E6C300',
+                backgroundColor: 'rgba(255, 215, 0, 0.1)',
+              },
+              '&:disabled': {
+                color: '#666',
+                borderColor: '#666',
+              }
+            }}
+          >
+            {loading ? <CircularProgress size={20} sx={{ color: '#FFD700' }} /> : 'Refresh'}
+          </Button>
+        </Box>
 
         <Box sx={{ mt: 6 }}>
-          {newsArticles.length > 0 ? (
+          {loading ? (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 4 }}>
+              <CircularProgress sx={{ color: '#FFD700' }} />
+              <Typography sx={{ color: '#fff', ml: 2 }}>
+                Loading latest news...
+              </Typography>
+            </Box>
+          ) : error ? (
+            <Typography align="center" sx={{ color: '#ff6b6b' }}>
+              {error}
+            </Typography>
+          ) : newsArticles.length > 0 ? (
             newsArticles.map((article, index) => (
               <Paper key={index} sx={{ p: 4, mb: 4, backgroundColor: '#222', color: '#fff', border: '1px solid #FFD700' }}>
                 <Typography variant="h4" component="h3" sx={{ color: '#FFD700' }}>
@@ -57,7 +152,7 @@ const News = () => {
             ))
           ) : (
             <Typography align="center" sx={{ color: '#fff' }}>
-              Loading news...
+              No news articles found.
             </Typography>
           )}
         </Box>
