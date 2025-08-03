@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Box, Typography, Button, Container, Grid, Stack } from '@mui/material';
+import { Box, Typography, Button, Container, Grid, Stack, useTheme, useMediaQuery } from '@mui/material';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -31,6 +31,8 @@ const BackgroundImageHalf = ({ x, y, clipPath }) => (
 );
 
 const Hero = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -52,7 +54,15 @@ const Hero = () => {
   ];
 
   return (
-    <Box ref={targetRef} sx={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+    <Box 
+      ref={targetRef} 
+      sx={{ 
+        position: 'relative', 
+        height: '100vh', 
+        overflow: 'hidden',
+        mt: isMobile ? '10px' : 0 // Add top margin for mobile to account for static header height
+      }}
+    >
       {/* Background Layers */}
       <BackgroundImageHalf x={xLeft} y={yLeft} clipPath="polygon(0 0, 50% 0, 50% 100%, 0 100%)" />
       <BackgroundImageHalf x={xRight} y={yRight} clipPath="polygon(50% 0, 100% 0, 100% 100%, 50% 100%)" />
@@ -89,9 +99,10 @@ const Hero = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: isMobile ? 'flex-start' : 'center',
           color: '#FFD700',
           textAlign: 'center',
+          paddingTop: isMobile ? '10px' : '0px',
         }}
       >
         <Box maxWidth="100%" width={"95%"}>

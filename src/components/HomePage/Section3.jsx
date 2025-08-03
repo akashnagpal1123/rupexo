@@ -206,7 +206,7 @@ const Section3 = () => {
               </Grid>
               {rate && (
                 <Typography variant="body2" sx={{ textAlign: 'center', mt: 3, opacity: 0.7 }}>
-                  Live rate: 1 USDT = ₹{rate} 
+                  Live rate: 1 USDT = ₹{rate-1} 
                   {/* (from {source}) */}
                 </Typography>
               )}

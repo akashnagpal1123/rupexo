@@ -33,7 +33,14 @@ const Header = () => {
   ];
 
   return (
-    <AppBar position="fixed" sx={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}>
+    <AppBar 
+      position={isMobile ? "static" : "fixed"} 
+      sx={{ 
+        background: 'rgba(0,0,0,0.8)', 
+        backdropFilter: 'blur(10px)',
+        zIndex: 1000
+      }}
+    >
       <Toolbar>
         <Box
           component={Link}
