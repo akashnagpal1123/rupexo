@@ -12,7 +12,7 @@ const AboutUs = () => {
           Welcome to Rupexo, your trusted partner in the world of digital currency exchange. We are dedicated to providing a secure, reliable, and user-friendly platform for all your crypto needs.
         </Typography>
         <Typography variant="body1" align="justify" paragraph sx={{ color: '#ccc' }}>
-          Founded in 2023, Rupexo was born out of a passion for blockchain technology and a desire to make digital currencies accessible to everyone. Our team of experienced professionals from the finance and technology sectors works tirelessly to ensure that our platform is not only powerful but also intuitive and easy to use.
+          Founded in 2020, Rupexo was born out of a passion for blockchain technology and a desire to make digital currencies accessible to everyone. Our team of experienced professionals from the finance and technology sectors works tirelessly to ensure that our platform is not only powerful but also intuitive and easy to use.
         </Typography>
         <Typography variant="body1" align="justify" paragraph sx={{ color: '#ccc' }}>
           Our mission is to empower individuals and businesses by providing them with the tools and knowledge to navigate the digital currency landscape with confidence. We believe in the transformative power of cryptocurrencies and are excited to be at the forefront of this financial revolution.

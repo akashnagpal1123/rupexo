@@ -197,8 +197,8 @@ const Footer = () => {
                       lineHeight: 1.4
                     }}
                   >
-                    <strong>Phone:</strong><br />
-                    +1 (555) 123-4567
+                    <strong>Office Phone:</strong><br />
+                    918700315995
                   </Typography>
                   
                   <Typography

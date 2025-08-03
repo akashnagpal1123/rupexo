@@ -42,9 +42,7 @@ const Partners = () => {
                 {partner.logo ? (
                   <img src={partner.logo} alt={`${partner.name} logo`} style={{ maxHeight: '50px', maxWidth: '150px', marginBottom: '1rem' }} />
                 ) : (
-                  <Box sx={{ height: '50px', width: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', backgroundColor: '#333' }}>
-                    <Typography variant="caption" color="text.secondary">Logo not found</Typography>
-                  </Box>
+                null
                 )}
                 <Typography variant="h6" component="h3" sx={{ mt: 2, color: '#FFD700' }}>
                   {partner.name}
