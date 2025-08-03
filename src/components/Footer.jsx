@@ -198,7 +198,7 @@ const Footer = () => {
                     }}
                   >
                     <strong>Office Phone:</strong><br />
-                    918700315995
+                    +91 8700315995
                   </Typography>
                   
                   <Typography
